@@ -1,9 +1,48 @@
-import { Actor, Color, Engine, FadeInOut, Keys, Scene, Transition, vec } from "excalibur";
+import { Actor, Color, Engine, FadeInOut, Keys, Scene, SceneActivationContext, Transition, vec } from "excalibur";
 import { Resources } from "../resources";
 
 export class historyScene extends Scene {
     // declaração do elemento texto
     elementoTexto?: HTMLElement
+
+    fadeInElement(elemento: HTMLElement) {
+        // pegar opacidade do elemento HTML
+        let opacidade = parseFloat(elemento.style.opacity)
+
+        // repetir diminuição da opacidade
+        setInterval(() => {
+            // se o elemento está invisível
+            if (opacidade < 0) {
+                // almentar opacidede
+                opacidade += 0.04
+    
+                // atualizar a opacidade do elemento
+                elemento.style.opacity = opacidade.toString()
+            }
+
+        }, 30)
+
+    }
+
+    // método para esmaecer elemento Html
+    fadeOutElement(elemento: HTMLElement) {
+        // pegar opacidade do elemento HTML
+        let opacidade = parseFloat(elemento.style.opacity)
+
+        // repetir diminuição da opacidade
+        setInterval(() => {
+            // se o elemento está visível
+            if (opacidade > 0) {
+                // diminuir opacidede
+                opacidade -= 0.03
+    
+                // atualizar a opacidade do elemento
+                elemento.style.opacity = opacidade.toString()
+            }
+
+        }, 30)
+
+    }
 
     onTransition(direction: "in" | "out"): Transition | undefined {
         return new FadeInOut({
@@ -15,12 +54,13 @@ export class historyScene extends Scene {
 
     onInitialize(engine: Engine<any>): void {
         this.backgroundColor = Color.fromHex("#403f4c")
-
+        
+        
         // criar elemento com descrição de empresa
         this.elementoTexto = document.createElement("div") as HTMLElement
         // opacidade = 1 visível
         this.elementoTexto.style.opacity = "1"
-
+        
         // inserir elementoTexto no container-game
         let containerGame = document.querySelector(".container-game") as HTMLElement
         containerGame.appendChild(this.elementoTexto)
@@ -36,6 +76,7 @@ export class historyScene extends Scene {
           equipes, aumentar a produtividade e motivar, adaptando cada projeto às necessidades específicas do cliente,
           desde programas de treinamento interativo até sistemas de recompensa e engajamento de funcionários.
         </p>`
+
 
         // actor logo vertical
         let actorLogoV = new Actor ({
@@ -58,8 +99,15 @@ export class historyScene extends Scene {
         this.input.keyboard.on("press", (event) => {
             // caso pressionado "Enter", próxima cena
             if (event.key == Keys.Enter) {
+                // criar transição elementoTexto
+                this.fadeOutElement(this.elementoTexto!)
+
                 engine.goToScene("gamificacao")
             }
         })
+    }
+
+    onDeactivate(context: SceneActivationContext<undefined>): void {
+        this.elementoTexto?.remove()
     }
 }
