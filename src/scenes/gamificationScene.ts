@@ -1,9 +1,29 @@
-import { Actor, Color, Engine, FadeInOut, Keys, Scene, Transition, vec } from "excalibur";
+import { Actor, Color, Engine, FadeInOut, Keys, Scene, SceneActivationContext, Transition, vec } from "excalibur";
 import { Resources } from "../resources";
 
 export class gamificationScene extends Scene {
 
     elementoTextoG?: HTMLElement
+
+    
+    fadeInElement(elemento: HTMLElement) {
+        // pegar opacidade do elemento HTML
+        let opacidade2 = parseFloat(elemento.style.opacity)
+
+        // repetir diminuição da opacidade
+        setInterval(() => {
+            // se o elemento está invisível
+            if (opacidade2 < 1) {
+                // almentar opacidede
+                opacidade2 += 0.01
+    
+                // atualizar a opacidade do elemento
+                elemento.style.opacity = opacidade2.toString()
+            }
+
+        }, 15)
+
+    }
 
     // método para esmaecer elemento Html
     fadeOutElement(elemento: HTMLElement) {
@@ -40,7 +60,7 @@ export class gamificationScene extends Scene {
         // criar elemento com descrição de empresa
         this.elementoTextoG = document.createElement("div") as HTMLElement
         // opacidade = 1 visível
-        this.elementoTextoG.style.opacity = "1"
+        this.elementoTextoG.style.opacity = "0"
 
         // inserir elementoTexto no container-game
         let containerGame = document.querySelector(".container-game") as HTMLElement
@@ -54,6 +74,8 @@ export class gamificationScene extends Scene {
          <p>
            Gamificação é a aplicação de elementos típicos de jogos em contextos não lúdicos, com o objetivo de engajar e motivar indivíduos a atingir determinados objetivos. Esta abordagem se utiliza de componentes como pontuação, níveis, recompensas, desafios, e feedback imediato, visando promover comportamentos desejados e aumentar a participação e o comprometimento dos participantes.
         </p>`
+
+        this.fadeInElement(this.elementoTextoG!)
 
         let actorGami = new Actor({
             pos: vec(300, engine.halfDrawHeight)
@@ -82,5 +104,9 @@ export class gamificationScene extends Scene {
             }
         })
 
+    }
+
+    onDeactivate(context: SceneActivationContext<undefined>): void {
+        this.elementoTextoG?.remove()
     }
 }

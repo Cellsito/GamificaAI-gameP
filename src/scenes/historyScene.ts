@@ -7,20 +7,20 @@ export class historyScene extends Scene {
 
     fadeInElement(elemento: HTMLElement) {
         // pegar opacidade do elemento HTML
-        let opacidade = parseFloat(elemento.style.opacity)
+        let opacidade2 = parseFloat(elemento.style.opacity)
 
         // repetir diminuição da opacidade
         setInterval(() => {
             // se o elemento está invisível
-            if (opacidade < 0) {
+            if (opacidade2 < 1) {
                 // almentar opacidede
-                opacidade += 0.04
+                opacidade2 += 0.01
     
                 // atualizar a opacidade do elemento
-                elemento.style.opacity = opacidade.toString()
+                elemento.style.opacity = opacidade2.toString()
             }
 
-        }, 30)
+        }, 15)
 
     }
 
@@ -45,6 +45,7 @@ export class historyScene extends Scene {
     }
 
     onTransition(direction: "in" | "out"): Transition | undefined {
+        
         return new FadeInOut({
             direction: direction,
             color: Color.Black,
@@ -54,12 +55,12 @@ export class historyScene extends Scene {
 
     onInitialize(engine: Engine<any>): void {
         this.backgroundColor = Color.fromHex("#403f4c")
-        
-        
+
+
         // criar elemento com descrição de empresa
         this.elementoTexto = document.createElement("div") as HTMLElement
         // opacidade = 1 visível
-        this.elementoTexto.style.opacity = "1"
+        this.elementoTexto.style.opacity = "0"
         
         // inserir elementoTexto no container-game
         let containerGame = document.querySelector(".container-game") as HTMLElement
@@ -77,6 +78,7 @@ export class historyScene extends Scene {
           desde programas de treinamento interativo até sistemas de recompensa e engajamento de funcionários.
         </p>`
 
+        this.fadeInElement(this.elementoTexto!)
 
         // actor logo vertical
         let actorLogoV = new Actor ({
