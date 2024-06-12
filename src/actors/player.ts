@@ -1,8 +1,8 @@
-import { Actor, Color, Engine, Keys, vec } from "excalibur";
+import { Actor, CollisionType, Color, Engine, Keys, vec } from "excalibur";
 
 export class Player extends Actor {
     // propriedades do player
-    private velocidade: number = 180 
+    private velocidade: number = 150
 
     // configuração do player
     constructor() {
@@ -11,7 +11,8 @@ export class Player extends Actor {
             width: 32,
             height:32,
             name: "cleber",
-            color: Color.Red
+            color: Color.Red,
+            collisionType: CollisionType.Active
         })
     }
 
