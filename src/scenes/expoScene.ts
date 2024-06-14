@@ -38,7 +38,7 @@ export class expoScene extends Scene {
         // criar e config Player
         let jogador = new Player(vec(spawnPoint.x + offsetX, spawnPoint.y + offsety))
 
-        jogador.z = 4
+        jogador.z = 3
 
         // adicionar o player na cena
         this.add(jogador)
