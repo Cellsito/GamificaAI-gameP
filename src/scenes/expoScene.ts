@@ -67,6 +67,8 @@ export class expoScene extends Scene {
             "NpcC"
         )
 
+        npcA.z = 4, npcB.z = 4, npcC.z = 4
+
         this.add(npcA)
         this.add(npcB)
         this.add(npcC)

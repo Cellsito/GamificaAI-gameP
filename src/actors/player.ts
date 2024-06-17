@@ -207,7 +207,7 @@ export class Player extends Actor {
                 
                 default:
                     // zera velocidade do player
-                    this.vel = vec(0, 0)
+                    // this.vel = vec(0, 0)
                     break;
             }
         })
@@ -242,6 +242,52 @@ export class Player extends Actor {
                 this.graphics.use(this.ultimaDirecao + "-idle")
             }
         })
+
+        // configura player para evento "press"
+        engine.input.keyboard.on("press", (event) => {
+            if (event.key == Keys.F && this.temObjetoProximo) {
+
+                // identificar alvo da interação
+                if(this.ultimoColisor?.owner.name == "mesa_stand_a") {
+                    console.log("Mesa A");
+
+                    // vai para a cena passando qual obj da interação
+                    engine.goToScene("case", {
+                        sceneActivationData: {
+                            // passa o nome do Actor q o Player interagiu
+                            nomeDoActor: this.ultimoColisor?.owner.name
+                        }
+                    })
+                    
+                }
+
+                if(this.ultimoColisor?.owner.name == "mesa_stand_b") {
+                    console.log("Mesa B");
+
+                    // vai para a cena passando qual obj da interação
+                    engine.goToScene("case", {
+                        sceneActivationData: {
+                            // passa o nome do Actor q o Player interagiu
+                            nomeDoActor: this.ultimoColisor?.owner.name
+                        }
+                    })
+                    
+                }
+
+                if(this.ultimoColisor?.owner.name == "mesa_stand_c") {
+                    console.log("Mesa C");
+
+                    // vai para a cena passando qual obj da interação
+                    engine.goToScene("case", {
+                        sceneActivationData: {
+                            // passa o nome do Actor q o Player interagiu
+                            nomeDoActor: this.ultimoColisor?.owner.name
+                        }
+                    })
+                    
+                }
+            }
+        })
     }
 
     onPreCollisionResolve(self: Collider, other: Collider, side: Side, contact: CollisionContact): void {
@@ -260,7 +306,7 @@ export class Player extends Actor {
             // 
             this.temObjetoProximo = false
 
-            console.log("Está longe")
+            // console.log("Está longe")
         }
     }
 

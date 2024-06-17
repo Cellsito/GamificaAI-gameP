@@ -82,3 +82,30 @@ body {
 
   line-height: 2;
 }
+
+.phoenix {
+  width: 500px;
+  height: 550px;
+
+  padding: 40px;
+
+  background-color: white;
+
+  border: solid 15px #8038FB;
+  color: black;
+  font-family: "Anta";
+
+  position: absolute;
+  top: 10%;
+  left: 3%;
+}
+
+.phoenix h2 {
+  color: #FA693A;
+  font-size: 40px;
+}
+
+.phoenix p {
+  color: black;
+  font-size: 20px;
+}
