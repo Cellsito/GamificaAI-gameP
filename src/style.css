@@ -83,6 +83,7 @@ body {
   line-height: 2;
 }
 
+/* PHOENIX ------------------------------------------------------------------------------------------------------------------------ */
 .phoenix {
   width: 500px;
   height: 550px;
@@ -111,11 +112,13 @@ body {
   font-size: 20px;
 }
 
+/* DELSIN ----------------------------------------------------------------------------------------------------------------------------*/
 .delsin {
   width: 500px;
-  height: 550px;
+  height: 600px;
 
   padding: 40px;
+  padding-top: 0px;
 
   background-color: black;
 
@@ -124,7 +127,7 @@ body {
   font-family: "Anta";
 
   position: absolute;
-  top: 10%;
+  top: 7%;
   left: 3%;
 }
 
@@ -138,6 +141,7 @@ body {
   font-size: 20px;
 }
 
+/* SPY ------------------------------------------------------------------------------------------------------------------------------------*/
 .spy {
   width: 500px;
   height: 550px;
@@ -154,4 +158,14 @@ body {
   position: absolute;
   top: 10%;
   left: 3%;
+}
+
+.spy h2 {
+  color: #ff8400;
+  font-size: 40px;
+}
+
+.spy p {
+  color: black;
+  font-size: 20px;
 }

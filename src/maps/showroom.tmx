@@ -246,9 +246,9 @@
   <object id="14" name="gaveta_c" x="737.705" y="241.591" width="30.7386" height="15.1023"/>
   <object id="16" name="gaveta_b" x="513.902" y="240.377" width="29.8636" height="16.0909"/>
   <object id="17" name="gaveta_a" x="289.987" y="240.186" width="29.7386" height="16.7728"/>
-  <object id="18" name="computers_c" x="585.909" y="233.909" width="44" height="29.0909"/>
-  <object id="19" name="computers_b" x="362" y="234.364" width="44" height="28.0455"/>
-  <object id="20" name="computers_a" x="138.136" y="234.045" width="44" height="27.4091"/>
+  <object id="18" name="computers_c" x="585.909" y="233.909" width="44" height="23.0909"/>
+  <object id="19" name="computers_b" x="362" y="234.364" width="44" height="22.4091"/>
+  <object id="20" name="computers_a" x="138.136" y="234.045" width="44" height="23.2273"/>
   <object id="21" name="taco_sinuca" x="836.006" y="366.097" width="25.9886" height="29.9659"/>
   <object id="23" name="sofa_lado" x="145.152" y="315.748" width="45.0303" height="105.261"/>
   <object id="24" name="sofa_tras" x="191.985" y="130.657" width="96.2803" height="32.686"/>
